@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using MTC.Model;
 using MTC.Model.DTOs;
+using MTC.Service.Commons;
 
 namespace MTC.Core.Api.Config
 {
@@ -13,6 +10,7 @@ namespace MTC.Core.Api.Config
         public AutoMapperConfig()
         {
             CreateMap<Usuario, UsuarioDto>();
+            CreateMap<DataCollection<Usuario>, DataCollection<UsuarioDto>>();
         }
     }
 }

@@ -1,9 +1,14 @@
-﻿using MTC.Model.DTOs;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using MTC.Model.DTOs;
 using MTC.Persistence.Database;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using MTC.Model;
+using MTC.Service.Commons;
+using MTC.Service.Extensions;
 
 namespace MTC.Service
 {
@@ -12,6 +17,8 @@ namespace MTC.Service
         Task<UsuarioDto> Create(UsuarioCreateDto model);
         Task<UsuarioDto> GetById(int id);
         Task Update(int id, UsuarioUpdateDto model);
+        Task Remove(int id);
+        Task<DataCollection<UsuarioDto>> GetAll(int page, int take );
     }
    
     public class UsuarioService : IUsuarioService
@@ -24,6 +31,17 @@ namespace MTC.Service
         {
             _context = context;
             _mapper = mapper;
+        }
+
+        public async Task<DataCollection<UsuarioDto>> GetAll(int page, int take)
+        {
+
+           return _mapper.Map<DataCollection<UsuarioDto>>(
+                await _context.Usuarios.OrderByDescending(x=>x.UsuarioId)
+                    .AsQueryable()
+                    .PagedAsync(page,take)
+               );
+
         }
 
         public async Task<UsuarioDto> GetById(int id)
@@ -60,6 +78,17 @@ namespace MTC.Service
             entry.ApellidoMaterno = model.ApellidoMaterno;
             entry.DNI = model.DNI;
             entry.RUC = model.RUC;
+
+            await _context.SaveChangesAsync();
+        }
+
+
+        public async Task Remove(int id)
+        {
+            _context.Usuarios.Remove(new Usuario
+            {
+                UsuarioId = id
+            });
 
             await _context.SaveChangesAsync();
         }
