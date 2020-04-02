@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using MTC.Model;
+using MTC.Model.Identity;
 using MTC.Persistence.Database.Config;
 
 namespace MTC.Persistence.Database
 {
 
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -21,6 +23,9 @@ namespace MTC.Persistence.Database
             base.OnModelCreating(modelBuilder);
 
             new UsuarioConfig(modelBuilder.Entity<Usuario>());
+            new ApplicationUserConfig(modelBuilder.Entity<ApplicationUser>());
+            new ApplicationRoleConfig(modelBuilder.Entity<ApplicationRole>());
+
         }
     }
 }
