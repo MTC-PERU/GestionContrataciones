@@ -22,14 +22,27 @@ namespace MTC.Core.Api.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(UsuarioCreateDto model)
         {
-            await _usuarioService.Create(model);
-            return Ok();
+            var result = await _usuarioService.Create(model);
+            return CreatedAtAction(
+                "GetById", 
+                new {id = result.UsuarioId}, 
+                result);
         }
+
+
 
         [HttpGet("{id}")]
         public async Task<ActionResult<UsuarioDto>> GetById(int id)
         {
             return await _usuarioService.GetById(id);
+        }
+
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> Update(int id, UsuarioUpdateDto model)
+        {
+            await _usuarioService.Update(id, model);
+            return NoContent();
         }
     }
 }

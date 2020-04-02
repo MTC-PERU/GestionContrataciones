@@ -16,6 +16,20 @@ namespace MTC.Model.DTOs
         public string RUC { get; set; }
     }
 
+    public class UsuarioUpdateDto
+    {
+        [Required]
+        public string Nombre { get; set; }
+        [Required]
+        public string ApellidoPaterno { get; set; }
+        [Required]
+        public string ApellidoMaterno { get; set; }
+        [Required]
+        public string DNI { get; set; }
+        [Required]
+        public string RUC { get; set; }
+    }
+
     public class UsuarioDto
     {
         public int UsuarioId { get; set; }

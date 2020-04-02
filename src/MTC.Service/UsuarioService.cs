@@ -9,8 +9,9 @@ namespace MTC.Service
 {
     public interface IUsuarioService
     {
-        Task Create(UsuarioCreateDto model);
+        Task<UsuarioDto> Create(UsuarioCreateDto model);
         Task<UsuarioDto> GetById(int id);
+        Task Update(int id, UsuarioUpdateDto model);
     }
    
     public class UsuarioService : IUsuarioService
@@ -33,7 +34,7 @@ namespace MTC.Service
                 );
         }
 
-        public async Task Create(UsuarioCreateDto model)
+        public async Task<UsuarioDto> Create(UsuarioCreateDto model)
         {
             var entry = new Usuario
             {
@@ -45,6 +46,21 @@ namespace MTC.Service
 
             };
             await _context.AddAsync(entry);
+            await _context.SaveChangesAsync();
+
+            return _mapper.Map<UsuarioDto>(entry);
+        }
+
+        public async Task Update (int id , UsuarioUpdateDto model)
+        {
+            var entry = await _context.Usuarios.SingleAsync(x => x.UsuarioId == id);
+
+            entry.Nombre = model.Nombre;
+            entry.ApellidoPaterno = model.ApellidoPaterno;
+            entry.ApellidoMaterno = model.ApellidoMaterno;
+            entry.DNI = model.DNI;
+            entry.RUC = model.RUC;
+
             await _context.SaveChangesAsync();
         }
     }
