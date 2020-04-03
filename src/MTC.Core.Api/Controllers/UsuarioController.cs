@@ -1,11 +1,16 @@
-﻿using System.Threading.Tasks;
+﻿using System.Net;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MTC.Core.Api.Commons;
 using MTC.Model.DTOs;
 using MTC.Service;
 using MTC.Service.Commons;
 
 namespace MTC.Core.Api.Controllers
 {
+    //[Authorize(Roles = RoleHelper.Admin + ","+ RoleHelper.Coordinator)]
+    [Authorize(Roles = RoleHelper.Admin)]
     [ApiController]
     [Route("Usuarios")]
     public class UsuarioController : ControllerBase

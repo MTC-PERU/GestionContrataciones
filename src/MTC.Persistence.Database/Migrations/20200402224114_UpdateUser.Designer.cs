@@ -3,15 +3,17 @@ using System;
 using MTC.Persistence.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace MTC.Persistence.Database.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200402224114_UpdateUser")]
+    partial class UpdateUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -273,22 +275,6 @@ namespace MTC.Persistence.Database.Migrations
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityRole");
 
                     b.HasDiscriminator().HasValue("ApplicationRole");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "78155ba8-3054-45dd-81e7-19410c9e60ed",
-                            ConcurrencyStamp = "41ad566e-84a8-48c8-8fb7-6a1930450f6d",
-                            Name = "Admin",
-                            NormalizedName = "Admin"
-                        },
-                        new
-                        {
-                            Id = "4cbf5229-47ef-4308-a95e-d1c2655ace5b",
-                            ConcurrencyStamp = "fa9a7346-e230-4546-8f98-3887cd72b1bb",
-                            Name = "Coordinator",
-                            NormalizedName = "Coordinator"
-                        });
                 });
 
             modelBuilder.Entity("MTC.Model.Identity.ApplicationUser", b =>
