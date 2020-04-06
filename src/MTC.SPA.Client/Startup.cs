@@ -26,6 +26,12 @@ namespace MTC.SPA.Client
                 app.UseDeveloperExceptionPage();
             }
 
+            //app.UseSpa(spa =>
+            //{
+            //    spa.UseProxyToSpaDevelopmentServer("http://localhost:63538/");
+            //});
+
+
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>

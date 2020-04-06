@@ -31,44 +31,44 @@ namespace MTC.Core.Api
             services.AddDbContext<ApplicationDbContext>(
                 opts => opts.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<ApplicationUser, ApplicationRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            //services.AddIdentity<ApplicationUser, ApplicationRole>()
+            //    .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            services.Configure<IdentityOptions>(options =>
-            {
-                options.Password.RequireDigit = false;
-                options.Password.RequireLowercase = false;
-                options.Password.RequireNonAlphanumeric = false;
-                options.Password.RequireUppercase = false;
-                options.Password.RequiredLength = 6;
-                options.Password.RequiredUniqueChars = 1;
-            });
+            //services.Configure<IdentityOptions>(options =>
+            //{
+            //    options.Password.RequireDigit = false;
+            //    options.Password.RequireLowercase = false;
+            //    options.Password.RequireNonAlphanumeric = false;
+            //    options.Password.RequireUppercase = false;
+            //    options.Password.RequiredLength = 6;
+            //    options.Password.RequiredUniqueChars = 1;
+            //});
 
             services.AddTransient<IUsuarioService, UsuarioService>();
 
             services.AddAutoMapper(typeof(Startup));
 
-            var key = Encoding.ASCII.GetBytes(
-                Configuration.GetValue<string>("SecretKey")
-            );
+            //var key = Encoding.ASCII.GetBytes(
+            //    Configuration.GetValue<string>("SecretKey")
+            //);
 
-            services.AddAuthentication(x =>
-                {
-                    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                }
-            ).AddJwtBearer(x =>
-            {
-                x.RequireHttpsMetadata = false; // es true si en PRD se cuenta con un certificado SSL
-                x.SaveToken = true; // TOken disponible dentro del request actual
-                x.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(key), // contiene info Secret Key
-                    ValidateIssuer = false,
-                    ValidateAudience = false
-                };
-            });
+            //services.AddAuthentication(x =>
+            //    {
+            //        x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            //        x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            //    }
+            //).AddJwtBearer(x =>
+            //{
+            //    x.RequireHttpsMetadata = false; // es true si en PRD se cuenta con un certificado SSL
+            //    x.SaveToken = true; // TOken disponible dentro del request actual
+            //    x.TokenValidationParameters = new TokenValidationParameters
+            //    {
+            //        ValidateIssuerSigningKey = true,
+            //        IssuerSigningKey = new SymmetricSecurityKey(key), // contiene info Secret Key
+            //        ValidateIssuer = false,
+            //        ValidateAudience = false
+            //    };
+            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -81,7 +81,7 @@ namespace MTC.Core.Api
 
             app.UseRouting();
 
-            app.UseAuthentication();
+            //app.UseAuthentication();
             app.UseAuthorization();
             
 

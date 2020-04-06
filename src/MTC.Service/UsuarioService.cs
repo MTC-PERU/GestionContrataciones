@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using MTC.Model.DTOs;
 using MTC.Persistence.Database;
 using System.Threading.Tasks;

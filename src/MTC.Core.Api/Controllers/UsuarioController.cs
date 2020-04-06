@@ -10,7 +10,7 @@ using MTC.Service.Commons;
 namespace MTC.Core.Api.Controllers
 {
     //[Authorize(Roles = RoleHelper.Admin + ","+ RoleHelper.Coordinator)]
-    [Authorize(Roles = RoleHelper.Admin)]
+   // [Authorize(Roles = RoleHelper.Admin)]
     [ApiController]
     [Route("Usuarios")]
     public class UsuarioController : ControllerBase
