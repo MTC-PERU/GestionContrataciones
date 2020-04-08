@@ -1,8 +1,5 @@
-﻿using System.Net;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using MTC.Core.Api.Commons;
 using MTC.Model.DTOs;
 using MTC.Service;
 using MTC.Service.Commons;

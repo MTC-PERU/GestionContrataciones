@@ -5,12 +5,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200331001046_Initialize.cs" />
+    <Compile Remove="Migrations\20200331001046_Initialize.Designer.cs" />
     <Compile Remove="Migrations\20200402063328_AddIdentityTables.cs" />
     <Compile Remove="Migrations\20200402063328_AddIdentityTables.Designer.cs" />
     <Compile Remove="Migrations\20200402224114_UpdateUser.cs" />
     <Compile Remove="Migrations\20200402224114_UpdateUser.Designer.cs" />
     <Compile Remove="Migrations\20200403045557_InsertDefaultRoles.cs" />
     <Compile Remove="Migrations\20200403045557_InsertDefaultRoles.Designer.cs" />
+    <Compile Remove="Migrations\20200407175610_AddPersonal_TDR_Tables.cs" />
+    <Compile Remove="Migrations\20200407175610_AddPersonal_TDR_Tables.Designer.cs" />
+    <Compile Remove="Migrations\20200407222907_Add_Tables_Personal_TDR.cs" />
+    <Compile Remove="Migrations\20200407222907_Add_Tables_Personal_TDR.Designer.cs" />
+    <Compile Remove="Migrations\20200407235308_Add_Tables_Personal_TDR.cs" />
+    <Compile Remove="Migrations\20200407235308_Add_Tables_Personal_TDR.Designer.cs" />
+    <Compile Remove="Migrations\20200408015218_Add_Tables_Personal_TDR.cs" />
+    <Compile Remove="Migrations\20200408015218_Add_Tables_Personal_TDR.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

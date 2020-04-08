@@ -1,15 +1,11 @@
-using System.Text;
 using AutoMapper;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.IdentityModel.Tokens;
-using MTC.Model.Identity;
+using Microsoft.OpenApi.Models;
 using MTC.Persistence.Database;
 using MTC.Service;
 
@@ -30,7 +26,14 @@ namespace MTC.Core.Api
             services.AddControllers();
             services.AddDbContext<ApplicationDbContext>(
                 opts => opts.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
-
+            //services.AddSwaggerGen(c =>
+            //{
+            //    c.SwaggerDoc("v1",new OpenApiInfo()
+            //    {
+            //        Title = "MTC Api Services Angular Client",
+            //        Version = "v1"
+            //    });
+            //});
             //services.AddIdentity<ApplicationUser, ApplicationRole>()
             //    .AddEntityFrameworkStores<ApplicationDbContext>();
 
@@ -45,6 +48,7 @@ namespace MTC.Core.Api
             //});
 
             services.AddTransient<IUsuarioService, UsuarioService>();
+            services.AddTransient<IPersonalService, PersonalService>();
 
             services.AddAutoMapper(typeof(Startup));
 
@@ -74,11 +78,20 @@ namespace MTC.Core.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            //app.UseSwagger();
+            //app.UseSwaggerUI(c =>
+            //{
+            //    string swaggerJsonBasePath = string.IsNullOrWhiteSpace(c.RoutePrefix) ? "." : "..";
+            //    c.SwaggerEndpoint($"{swaggerJsonBasePath}/swagger/v1/swagger.json", "v1");
+            //    c.RoutePrefix = string.Empty;
+            //});
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
+           
             app.UseRouting();
 
             //app.UseAuthentication();

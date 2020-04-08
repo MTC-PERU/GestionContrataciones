@@ -10,7 +10,9 @@ namespace MTC.Core.Api.Config
         public AutoMapperConfig()
         {
             CreateMap<Usuario, UsuarioDto>();
+            CreateMap<Personal, PersonalDto>();
             CreateMap<DataCollection<Usuario>, DataCollection<UsuarioDto>>();
+            CreateMap<DataCollection<Personal>, DataCollection<PersonalDto>>();
         }
     }
 }
