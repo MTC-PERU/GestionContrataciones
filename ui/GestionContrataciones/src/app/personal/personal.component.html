@@ -1,0 +1,98 @@
+<div class="row text-right">
+    <div class="col">
+        <button class="btn btn-danger" routerLink="/listaPersonal">
+        <i class="fa fa-arrow-left"></i>
+        Regresar
+       </button>
+    </div>
+</div>
+
+<div class="row animated fadeIn faster">
+    <div class="col">
+
+        <!--<form [formGroup]="form" (submit)="onSubmit(form.value)">-->
+        <form (ngSubmit)="guardar( f )" #f="ngForm">
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label>Id</label>
+                    <input type="text" class="form-control" id="validationDefault01" [(ngModel)]="personal.personalId" name="id" value="" disabled="disabled">
+                    <small class="form-text text-muted">Este campo es autogenerado</small>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="nombres">Nombres</label>
+                    <input type="text" [(ngModel)]="personal.nombres" name="nombres" class="form-control" id="validationDefault01" value="" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="apellidoPaterno">Apellido Paterno</label>
+                    <input type="text" [(ngModel)]="personal.apellido_Paterno" name="Apellido_Paterno" class="form-control" id="validationDefault02" value="" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="apellidoMaterno">Apellido Materno</label>
+                    <input type="text" [(ngModel)]="personal.apellido_Materno" name="Apellido_Materno" class="form-control" id="validationDefault02" value="" required>
+                </div>
+
+            </div>
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="email">Correo Electronico</label>
+                    <input type="email" [(ngModel)]="personal.email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="dni">DNI</label>
+                    <input type="text" [(ngModel)]="personal.dni" name="dni" class="form-control" id="validationDefault05" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="ruc">RUC</label>
+                    <input type="text" [(ngModel)]="personal.ruc" name="ruc" class="form-control" id="validationDefault05" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="direccion">Direccion</label>
+                    <input type="text" [(ngModel)]="personal.direccion" name="direccion" class="form-control" id="validationDefault03" required>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="cci">CCI</label>
+                    <input type="text" [(ngModel)]="personal.cci" name="cci" class="form-control" id="validationDefault03" required>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="nroCelular">Numero celular</label>
+                    <input type="text" [(ngModel)]="personal.nro_Celular" name="nro_Celular" class="form-control" id="validationDefault02" value="" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-12 mb-3">
+                    <label for="perfil">Perfil</label>
+                    <input type="text" [(ngModel)]="personal.perfil" name="perfil" class="form-control" id="validationDefault03" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="experienciaGeneral">Experiencia General</label>
+                    <!--<input type="text" class="form-control" id="validationDefault03" required>-->
+                    <textarea class="form-control" [(ngModel)]="personal.experiencia_General" name="experiencia_General" aria-label="With textarea" required></textarea>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="experienciaEspecifica">Experiencia Especifica</label>
+                    <!--<input type="text" class="form-control" id="validationDefault03" required>-->
+                    <textarea class="form-control" [(ngModel)]="personal.experiencia_Especifica" name="experiencia_Especifica" aria-label="With textarea" required></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" [(ngModel)]="personal.esCoordinador" name="esCoordinador" type="checkbox" value="" id="invalidCheck2" required>
+                    <label class="form-check-label" for="esCoordinador">
+          Es Coordinador
+        </label>
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit">
+                <i class="fa fa-save"></i>
+                Guardar
+            </button>
+        </form>
+    </div>
+</div>
